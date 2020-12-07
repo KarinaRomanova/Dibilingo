@@ -1,22 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/move"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_columnSpan="1"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="bottom"
+    android:columnCount="2"
+    android:rowCount="3">
     <ImageView
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
-        android:src="@drawable/grey_fish" />
+        android:src="@drawable/grey_fish"
 
-    <ImageView
-        android:id="@+id/ImageView"
+        />
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+
+        android:text="111111111111111" />
+
+    <Button
+        android:layout_width="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        android:text="2222222222222" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="3" />
+
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:text="4" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="4444444" />
+
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:text="555555555555555555555" />
 
 
-        android:src="@drawable/grey_fish" />
-
-</RelativeLayout>
+</GridLayout>
