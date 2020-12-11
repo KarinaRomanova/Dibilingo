@@ -1,9 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+    android:layout_gravity="bottom"
+    android:columnCount="2"
+    android:rowCount="3">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".first_lvl">
+    tools:context=".MainActivity">
 
+        <ImageView
+            android:id="@+id/grey_fish"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/grey_fish"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/fish_grey"
+            android:fontFamily="@font/boomboom"
+            android:text="  ... "
+            android:textColor="#FFFFFF"
+
+
+            android:textSize="30sp"
+            app:layout_constraintLeft_toRightOf="@id/grey_fish"
+            app:layout_constraintRight_toLeftOf="@id/grey_tail"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/grey_tail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/grey_tail"
+            app:layout_constraintLeft_toRightOf="@id/textView2"
+
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        android:layout_width="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/grey_fish2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/grey_fish"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@color/fish_grey"
+            android:fontFamily="@font/boomboom"
+            android:text="  ... "
+            android:textColor="#FFFFFF"
+
+
+            android:textSize="30sp"
+            app:layout_constraintLeft_toRightOf="@id/grey_fish2"
+            app:layout_constraintRight_toLeftOf="@id/grey_tail2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/grey_tail2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/grey_tail"
+            app:layout_constraintLeft_toRightOf="@id/textView22"
+
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        android:layout_width="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/grey_fish3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/grey_fish"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/fish_grey"
+        android:fontFamily="@font/boomboom"
+        android:text="  ... "
+        android:textColor="#FFFFFF"
+
+
+        android:textSize="30sp"
+        app:layout_constraintLeft_toRightOf="@id/grey_fish3"
+        app:layout_constraintRight_toLeftOf="@id/grey_tail3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/grey_tail3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/grey_tail"
+        app:layout_constraintLeft_toRightOf="@id/textView23"
+
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    android:layout_width="wrap_content"
+
+    android:layout_gravity="center_horizontal"
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</GridLayout>

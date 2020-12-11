@@ -12,6 +12,6 @@ android:shape="rectangle">
         android:color="@color/colorFrame">
     </solid>
     <corners
-        android:radius="40dp">
+        android:radius="20dp">
     </corners>
 </shape>
