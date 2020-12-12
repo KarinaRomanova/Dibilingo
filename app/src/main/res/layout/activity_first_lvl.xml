@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:background="@color/fish_grey"
-            android:fontFamily="@font/boomboom"
+            android:fontFamily="@font/boom"
             android:text="  ... "
             android:textColor="#FFFFFF"
 
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:background="@color/fish_grey"
-            android:fontFamily="@font/boomboom"
+            android:fontFamily="@font/boom"
             android:text="  ... "
             android:textColor="#FFFFFF"
 
@@ -126,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:background="@color/fish_grey"
-        android:fontFamily="@font/boomboom"
+        android:fontFamily="@font/boom"
         android:text="  ... "
         android:textColor="#FFFFFF"
 
