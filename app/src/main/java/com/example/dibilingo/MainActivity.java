@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
@@ -29,11 +30,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
-
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity  {
     RelativeLayout relativeLayout;
     FrameLayout frameLayout;
     MotionEvent event;
@@ -53,20 +56,53 @@ public class MainActivity extends Activity {
                 x=event.getX();
                 y=event.getY();
                 if(event.getAction()==MotionEvent.ACTION_MOVE){
+                    if(x<relativeLayout.getWidth()/2){
+                    frameLayout.setPivotX(0);
+                    frameLayout.setPivotY(frameLayout.getHeight());}
+                    if(x>=relativeLayout.getWidth()/2){
+                        frameLayout.setPivotX(frameLayout.getWidth());
+                        frameLayout.setPivotY(frameLayout.getHeight());}
+                    frameLayout.setRotation((x-relativeLayout.getWidth()/2)/6);
+                }
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    if (frameLayout.getRotation()>=10){
+                        RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
+                        1f,  Animation.RELATIVE_TO_SELF, 1f);
+                        frameLayout.setAlpha(1f);
+                        frameLayout.setVisibility(View.VISIBLE);
+                        frameLayout.animate()
+                                .alpha(0f)
+                                .setDuration(400)
+                                .setListener(null);
+                        rotate.setDuration(500);
+                frameLayout.startAnimation(rotate);
+                relativeLayout.removeView(frameLayout);}
+                    if (frameLayout.getRotation()<=-10){
+                        RotateAnimation rotate = new RotateAnimation(0, -100, Animation.RELATIVE_TO_SELF,
+                                0f,  Animation.RELATIVE_TO_SELF, 1f);
+                        frameLayout.setAlpha(1f);
+                        frameLayout.setVisibility(View.VISIBLE);
+                        frameLayout.animate()
+                                .alpha(0f)
+                                .setDuration(400)
+                                .setListener(null);
+                        rotate.setDuration(500);
+                        frameLayout.startAnimation(rotate);
+                        relativeLayout.removeView(frameLayout);}
+                    else{
+                        frameLayout.setRotation(frameLayout.getRotation());
+                        frameLayout.animate()
+                                .rotation(0)
+                                .setDuration(500)
+                                .setListener(null);
 
 
-                     frameLayout.setRotation((x-relativeLayout.getWidth()/2)/6);
-
-
-                }return true;
+                    }
+                }
+                return true;
             }
         });
     }
 
 
     }
-  //              после того как оотпускаешь проверяем угол и отлетает
-//                RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
-//                        1f,  Animation.RELATIVE_TO_SELF, 1f);
-//                rotate.setDuration(200);
-//                frameLayout.startAnimation(rotate);
