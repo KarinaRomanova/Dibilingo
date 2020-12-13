@@ -49,59 +49,59 @@ public class MainActivity extends Activity  {
         setContentView(R.layout.activity_main);
         relativeLayout=(RelativeLayout) findViewById(R.id.relativeLayout);
         frameLayout=(FrameLayout) findViewById(R.id.card);
-        final Integer fWidth = frameLayout.getWidth();
-        relativeLayout.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event){
-                x=event.getX();
-                y=event.getY();
-                if(event.getAction()==MotionEvent.ACTION_MOVE){
-                    if(x<relativeLayout.getWidth()/2){
-                    frameLayout.setPivotX(0);
-                    frameLayout.setPivotY(frameLayout.getHeight());}
-                    if(x>=relativeLayout.getWidth()/2){
-                        frameLayout.setPivotX(frameLayout.getWidth());
-                        frameLayout.setPivotY(frameLayout.getHeight());}
-                    frameLayout.setRotation((x-relativeLayout.getWidth()/2)/6);
-                }
-                if(event.getAction()==MotionEvent.ACTION_UP){
-                    if (frameLayout.getRotation()>=10){
-                        RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
-                        1f,  Animation.RELATIVE_TO_SELF, 1f);
-                        frameLayout.setAlpha(1f);
-                        frameLayout.setVisibility(View.VISIBLE);
-                        frameLayout.animate()
-                                .alpha(0f)
-                                .setDuration(400)
-                                .setListener(null);
-                        rotate.setDuration(500);
-                frameLayout.startAnimation(rotate);
-                relativeLayout.removeView(frameLayout);}
-                    if (frameLayout.getRotation()<=-10){
-                        RotateAnimation rotate = new RotateAnimation(0, -100, Animation.RELATIVE_TO_SELF,
-                                0f,  Animation.RELATIVE_TO_SELF, 1f);
-                        frameLayout.setAlpha(1f);
-                        frameLayout.setVisibility(View.VISIBLE);
-                        frameLayout.animate()
-                                .alpha(0f)
-                                .setDuration(400)
-                                .setListener(null);
-                        rotate.setDuration(500);
-                        frameLayout.startAnimation(rotate);
-                        relativeLayout.removeView(frameLayout);}
-                    else{
-                        frameLayout.setRotation(frameLayout.getRotation());
-                        frameLayout.animate()
-                                .rotation(0)
-                                .setDuration(500)
-                                .setListener(null);
 
-
-                    }
-                }
-                return true;
-            }
-        });
+//        relativeLayout.setOnTouchListener(new View.OnTouchListener(){
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event){
+//                x=event.getX();
+//                y=event.getY();
+//                if(event.getAction()==MotionEvent.ACTION_MOVE){
+//                    if(x<relativeLayout.getWidth()/2){
+//                    frameLayout.setPivotX(0);
+//                    frameLayout.setPivotY(frameLayout.getHeight());}
+//                    if(x>=relativeLayout.getWidth()/2){
+//                        frameLayout.setPivotX(frameLayout.getWidth());
+//                        frameLayout.setPivotY(frameLayout.getHeight());}
+//                    frameLayout.setRotation((x-relativeLayout.getWidth()/2)/6);
+//                }
+//                if(event.getAction()==MotionEvent.ACTION_UP){
+//                    if (frameLayout.getRotation()>=10){
+//                        RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
+//                        1f,  Animation.RELATIVE_TO_SELF, 1f);
+//                        frameLayout.setAlpha(1f);
+//                        frameLayout.setVisibility(View.VISIBLE);
+//                        frameLayout.animate()
+//                                .alpha(0f)
+//                                .setDuration(400)
+//                                .setListener(null);
+//                        rotate.setDuration(500);
+//                frameLayout.startAnimation(rotate);
+//                relativeLayout.removeView(frameLayout);}
+//                    if (frameLayout.getRotation()<=-10){
+//                        RotateAnimation rotate = new RotateAnimation(0, -100, Animation.RELATIVE_TO_SELF,
+//                                0f,  Animation.RELATIVE_TO_SELF, 1f);
+//                        frameLayout.setAlpha(1f);
+//                        frameLayout.setVisibility(View.VISIBLE);
+//                        frameLayout.animate()
+//                                .alpha(0f)
+//                                .setDuration(400)
+//                                .setListener(null);
+//                        rotate.setDuration(500);
+//                        frameLayout.startAnimation(rotate);
+//                        relativeLayout.removeView(frameLayout);}
+//                    else{
+//                        frameLayout.setRotation(frameLayout.getRotation());
+//                        frameLayout.animate()
+//                                .rotation(0)
+//
+//                                .setListener(null);
+//
+//
+//                    }
+//                }
+//                return true;
+//            }
+//        });
     }
 
 

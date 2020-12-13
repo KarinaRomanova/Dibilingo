@@ -19,12 +19,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/card">
+
         <ImageView
             android:id="@+id/ex_frame"
             android:layout_width="330dp"
             android:layout_height="430dp"
             android:layout_gravity="center"
-            android:src="@drawable/shape"/>
+            android:src="@drawable/shape" />
         <ImageView
             android:layout_width="310dp"
             android:layout_height="300dp"
@@ -37,7 +38,7 @@
             android:layout_height="300dp"
             android:layout_marginBottom="50dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/apple"
+            android:src="@drawable/wolf"
             android:layout_gravity="center"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
