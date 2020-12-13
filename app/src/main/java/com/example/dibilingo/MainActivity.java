@@ -6,9 +6,13 @@ import android.animation.ValueAnimator;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -31,7 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends Activity {
     RelativeLayout relativeLayout;
-      FrameLayout frameLayout;
+    FrameLayout frameLayout;
     MotionEvent event;
     float x;
     float y;
@@ -42,28 +46,27 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         relativeLayout=(RelativeLayout) findViewById(R.id.relativeLayout);
         frameLayout=(FrameLayout) findViewById(R.id.card);
+        final Integer fWidth = frameLayout.getWidth();
+        relativeLayout.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event){
+                x=event.getX();
+                y=event.getY();
+                if(event.getAction()==MotionEvent.ACTION_MOVE){
 
 
-                relativeLayout.setOnTouchListener(new OnSwipeTouchListener(this) {
-            public boolean onSwipeTop() {
-                Toast.makeText(MainActivity.this, "top", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-            public void onSwipeRight() {
+                     frameLayout.setRotation((x-relativeLayout.getWidth()/2)/7);
 
-                RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
-                        1f,  Animation.RELATIVE_TO_SELF, 1f);
-                rotate.setDuration(300);
-                frameLayout.startAnimation(rotate);
 
-            }
-            public void onSwipeLeft() {
-                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
-
-            }
-            public boolean onSwipeBottom() {
-                Toast.makeText(MainActivity.this, "bottom", Toast.LENGTH_SHORT).show();
-                return true;
+                }return true;
             }
         });
-    }}
+    }
+
+
+    }
+  //              после того как оотпускаешь проверяем угол и отлетает
+//                RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
+//                        1f,  Animation.RELATIVE_TO_SELF, 1f);
+//                rotate.setDuration(200);
+//                frameLayout.startAnimation(rotate);
