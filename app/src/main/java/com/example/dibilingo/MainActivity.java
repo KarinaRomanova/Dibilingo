@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
                 if(event.getAction()==MotionEvent.ACTION_MOVE){
 
 
-                     frameLayout.setRotation((x-relativeLayout.getWidth()/2)/7);
+                     frameLayout.setRotation((x-relativeLayout.getWidth()/2)/6);
 
 
                 }return true;
