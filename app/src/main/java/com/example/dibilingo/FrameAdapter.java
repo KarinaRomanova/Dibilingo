@@ -48,7 +48,7 @@ public class FrameAdapter extends ArrayAdapter<StackItem> {
         textView.setText(stackItem.getItemText());
 
         // "image1", "image2",..
-        String imageName= stackItem.getImageName();
+        String imageName= stackItem.getImageName()+".png";
 
         int resId= this.getDrawableResIdByName(imageName);
 

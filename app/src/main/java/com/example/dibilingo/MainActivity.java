@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         relativeLayout=(RelativeLayout) findViewById(R.id.relativeLayout);
         this.stackView=(StackView) findViewById(R.id.stackView);
-        List<StackItem> items = new ArrayList<StackItem>();
-        for(String imageName: IMAGE_NAMES) {
-            items.add(new StackItem(imageName+".png", imageName));
-        }
-        FrameAdapter adapt = new FrameAdapter(this, R.layout.stack_item, items);
-        stackView.setAdapter(adapt);
+//        List<StackItem> items = new ArrayList<StackItem>();
+//        for(String imageName: IMAGE_NAMES) {
+//            items.add(new StackItem(imageName, imageName));
+//        }
+//        FrameAdapter adapt = new FrameAdapter(this, R.layout.stack_item, items);
+//        stackView.setAdapter(adapt);
         //анимка
 //
 //        relativeLayout.setOnTouchListener(new View.OnTouchListener(){
