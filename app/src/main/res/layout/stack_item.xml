@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/card">
+
+        <ImageView
+            android:id="@+id/ex_frame"
+            android:layout_width="330dp"
+            android:layout_height="430dp"
+            android:layout_gravity="center"
+            android:src="@drawable/shape" />
+        <ImageView
+            android:layout_width="310dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:id="@+id/in_frame"
+            android:src="@drawable/shape_in_frame" />
+        <ImageView
+            android:id="@+id/animal"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginBottom="50dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/wolf"
+            android:layout_gravity="center"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/white_text"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:fontFamily="@font/boom"
+                android:text="is it a "
+                android:textColor="#FFFFFF"
+                android:textSize="45sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/name_img"
+                app:layout_constraintRight_toLeftOf="@id/name_img" />
+
+            <TextView
+                android:id="@+id/name_img"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="150dp"
+                android:fontFamily="@font/boom"
+                android:text="CAT?"
+                android:textColor="#FF0000"
+                android:textSize="45sp"
+                app:layout_constraintLeft_toRightOf="@id/white_text"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,22 +34,38 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.Button;
+import android.widget.StackView;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends Activity  {
+public class MainActivity extends AppCompatActivity  {
     RelativeLayout relativeLayout;
     FrameLayout frameLayout;
     MotionEvent event;
     float x;
     float y;
-
+    private StackView stackView;
+    private final String[] IMAGE_NAMES= {"wolf","cow", "crab", "dog","donkey"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         relativeLayout=(RelativeLayout) findViewById(R.id.relativeLayout);
-        frameLayout=(FrameLayout) findViewById(R.id.card);
-
+        this.stackView=(StackView) findViewById(R.id.stackView);
+        List<StackItem> items = new ArrayList<StackItem>();
+        for(String imageName: IMAGE_NAMES) {
+            items.add(new StackItem(imageName+".png", imageName));
+        }
+        FrameAdapter adapt = new FrameAdapter(this, R.layout.stack_item, items);
+        stackView.setAdapter(adapt);
+        //анимка
+//
 //        relativeLayout.setOnTouchListener(new View.OnTouchListener(){
 //            @Override
 //            public boolean onTouch(View v, MotionEvent event){
@@ -95,6 +111,7 @@ public class MainActivity extends Activity  {
 //                                .rotation(0)
 //
 //                                .setListener(null);
+//
 //
 //
 //                    }
