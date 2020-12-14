@@ -14,8 +14,8 @@
     android:src="@drawable/back_1st"
     android:scaleType="centerCrop"
     />
-    <StackView
-        android:id="@+id/stackView"
+    <com.wenchao.cardstack.CardStack
+        android:id="@+id/container"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:loopViews="true" />

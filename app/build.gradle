@@ -30,4 +30,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.android.support:design:30.0.2'
+    compile 'com.github.wenchaojiang:AndroidSwipeableCardStack:0.1.4'
+}
+repositories {
+    maven { url "https://jitpack.io" }
 }

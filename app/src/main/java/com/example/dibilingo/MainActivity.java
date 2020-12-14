@@ -41,85 +41,90 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.StackView;
 
+import com.wenchao.cardstack.CardStack;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements CardStack.CardEventListener {
     RelativeLayout relativeLayout;
     FrameLayout frameLayout;
     MotionEvent event;
     float x;
     float y;
     private StackView stackView;
+    ArrayList<String> card_list;
+    CardStack cardstack;
+    SwipeCardAdapter swipe_card_adapter;
     private final String[] IMAGE_NAMES= {"wolf","cow", "crab", "dog","donkey"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         relativeLayout=(RelativeLayout) findViewById(R.id.relativeLayout);
-        this.stackView=(StackView) findViewById(R.id.stackView);
-//        List<StackItem> items = new ArrayList<StackItem>();
-//        for(String imageName: IMAGE_NAMES) {
-//            items.add(new StackItem(imageName, imageName));
-//        }
-//        FrameAdapter adapt = new FrameAdapter(this, R.layout.stack_item, items);
-//        stackView.setAdapter(adapt);
-        //анимка
-//
-//        relativeLayout.setOnTouchListener(new View.OnTouchListener(){
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event){
-//                x=event.getX();
-//                y=event.getY();
-//                if(event.getAction()==MotionEvent.ACTION_MOVE){
-//                    if(x<relativeLayout.getWidth()/2){
-//                    frameLayout.setPivotX(0);
-//                    frameLayout.setPivotY(frameLayout.getHeight());}
-//                    if(x>=relativeLayout.getWidth()/2){
-//                        frameLayout.setPivotX(frameLayout.getWidth());
-//                        frameLayout.setPivotY(frameLayout.getHeight());}
-//                    frameLayout.setRotation((x-relativeLayout.getWidth()/2)/6);
-//                }
-//                if(event.getAction()==MotionEvent.ACTION_UP){
-//                    if (frameLayout.getRotation()>=10){
-//                        RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
-//                        1f,  Animation.RELATIVE_TO_SELF, 1f);
-//                        frameLayout.setAlpha(1f);
-//                        frameLayout.setVisibility(View.VISIBLE);
-//                        frameLayout.animate()
-//                                .alpha(0f)
-//                                .setDuration(400)
-//                                .setListener(null);
-//                        rotate.setDuration(500);
-//                frameLayout.startAnimation(rotate);
-//                relativeLayout.removeView(frameLayout);}
-//                    if (frameLayout.getRotation()<=-10){
-//                        RotateAnimation rotate = new RotateAnimation(0, -100, Animation.RELATIVE_TO_SELF,
-//                                0f,  Animation.RELATIVE_TO_SELF, 1f);
-//                        frameLayout.setAlpha(1f);
-//                        frameLayout.setVisibility(View.VISIBLE);
-//                        frameLayout.animate()
-//                                .alpha(0f)
-//                                .setDuration(400)
-//                                .setListener(null);
-//                        rotate.setDuration(500);
-//                        frameLayout.startAnimation(rotate);
-//                        relativeLayout.removeView(frameLayout);}
-//                    else{
-//                        frameLayout.setRotation(frameLayout.getRotation());
-//                        frameLayout.animate()
-//                                .rotation(0)
-//
-//                                .setListener(null);
-//
-//
-//
-//                    }
-//                }
-//                return true;
-//            }
-//        });
+        card_list = new ArrayList<>();
+
+        card_list.add("card 1");
+        card_list.add("card 2");
+        card_list.add("card 3");
+        card_list.add("card 4");
+        card_list.add("card 5");
+
+        cardstack = (CardStack) findViewById(R.id.container);
+        cardstack.setContentResource(R.layout.stack_item);
+        cardstack.setStackMargin(18);
+        cardstack.setListener(this);
+
+        swipe_card_adapter = new SwipeCardAdapter(getApplicationContext(),0,card_list);
+        cardstack.setAdapter(swipe_card_adapter);
+
+    }
+    @Override
+    public boolean swipeEnd(int section, float distance) {
+        return true;
     }
 
+    @Override
+    public boolean swipeStart(int section, float distance) {
+        return true;
+    }
+
+    @Override
+    public boolean swipeContinue(int section, float distanceX, float distanceY) {
+        return true;
+    }
+
+    @Override
+    public void discarded(int mIndex, int direction) {
+
+        int swiped_card_postion = mIndex -1;
+
+        //getting the string attached with the card
+
+        String swiped_card_text = card_list.get(swiped_card_postion).toString();
+
+        if (direction == 1) {
+
+            Toast.makeText(getApplicationContext(),swiped_card_text+ " Swipped to Right",Toast.LENGTH_SHORT).show();
+
+        } else if (direction == 0) {
+
+            Toast.makeText(getApplicationContext(),swiped_card_text+" Swipped to Left",Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            Toast.makeText(getApplicationContext(),swiped_card_text+" Swipped to Bottom",Toast.LENGTH_SHORT).show();
+
+        }
+
+
+    }
+
+    @Override
+    public void topCardTapped() {
+
+        Toast.makeText(getApplicationContext(),"Clicked top card",Toast.LENGTH_SHORT).show();
+
+    }
 
     }
