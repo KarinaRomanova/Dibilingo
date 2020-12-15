@@ -68,8 +68,12 @@ public class FrameAdapter extends ArrayAdapter<StackItem> {
         textView.setText(stackItem.getItemText());
 
         // "image1", "image2",..
+<<<<<<< HEAD
         String imageName= stackItem.getImageName()+".png";
 >>>>>>> parent of d137878... swipe adapter
+=======
+        String imageName= stackItem.getImageName();
+>>>>>>> parent of be04691... stackitem
 
         int resId= this.getDrawableResIdByName(imageName);
 
