@@ -3,10 +3,11 @@
 <shape
 xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ex_frame"
-android:shape="rectangle">
+android:shape="rectangle"
+    >
 <stroke
     android:width="1dp"
-    android:color="@color/colorFrame">
+    android:color="@android:color/darker_gray">
 </stroke>
     <solid
         android:color="@color/colorFrame">
@@ -14,4 +15,5 @@ android:shape="rectangle">
     <corners
         android:radius="20dp">
     </corners>
+
 </shape>

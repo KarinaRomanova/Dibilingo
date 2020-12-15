@@ -44,16 +44,23 @@ import android.widget.StackView;
 
 public class MainActivity extends AppCompatActivity {
 RelativeLayout relativeLayout;
-FrameLayout[] frameLayout;
+FrameLayout[] frameLayoutArray;
+FrameLayout card5;
+ImageView animal;
 MotionEvent motionEvent;
 float x;
 float y;
+int i=0;
+    private final String[] IMAGE_NAMES= {"wolf","cow", "crab", "dog","donkey"};
+private final int[] IMAGE_ID={R.drawable.wolf,R.drawable.cow,R.drawable.crab,R.drawable.dog,R.drawable.donkey };
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
         relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
+card5=findViewById(R.id.card);
+
+        setContentView(R.layout.activity_main);
         //frameLayout = (FrameLayout) findViewById(R.id.card);
 //        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
 //
@@ -111,5 +118,6 @@ float y;
 //            }
 //        });
     }
+
 
     }
