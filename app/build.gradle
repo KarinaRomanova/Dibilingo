@@ -30,11 +30,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.android.support:design:30.0.2'
-<<<<<<< HEAD
-    implementation "com.yuyakaido.android:card-stack-view:${LatestVersion}"
+
 }
-repositories {
-    maven { url "https://jitpack.io" }
-=======
->>>>>>> parent of d137878... swipe adapter
-}
+
