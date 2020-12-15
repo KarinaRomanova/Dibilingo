@@ -1,10 +1,20 @@
 package com.example.dibilingo;
 import android.content.Context;
+<<<<<<< HEAD
+=======
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.content.Context;
+import android.graphics.Color;
+>>>>>>> parent of d137878... swipe adapter
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+<<<<<<< HEAD
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,6 +23,14 @@ import android.widget.TextView;
 import java.util.List;
 
 public class FrameAdapter extends ArrayAdapter<StackItem> {
+=======
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.List;
+
+public class FrameAdapter extends ArrayAdapter<StackItem> {
+
+>>>>>>> parent of d137878... swipe adapter
     private List<StackItem> items;
     private Context context;
 
@@ -41,10 +59,17 @@ public class FrameAdapter extends ArrayAdapter<StackItem> {
         // ImageView defined in the stack_item.xml
         ImageView imageView = (ImageView) itemView.findViewById(R.id.animal);
 
+<<<<<<< HEAD
         textView.setText(stackItem.getImageName());
 
         // "image1", "image2",..
         String imageName= stackItem.getImageName();
+=======
+        textView.setText(stackItem.getItemText());
+
+        // "image1", "image2",..
+        String imageName= stackItem.getImageName()+".png";
+>>>>>>> parent of d137878... swipe adapter
 
         int resId= this.getDrawableResIdByName(imageName);
 

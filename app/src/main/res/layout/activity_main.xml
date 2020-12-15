@@ -14,6 +14,15 @@
     android:src="@drawable/back_1st"
     android:scaleType="centerCrop"
     />
+<<<<<<< HEAD
+=======
+    <StackView
+        android:id="@+id/stackView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:loopViews="true" />
+
+>>>>>>> parent of d137878... swipe adapter
 
     <com.andtinder.view.CardContainer
         xmlns:android="http://schemas.android.com/apk/res/android"
