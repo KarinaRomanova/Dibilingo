@@ -45,86 +45,41 @@ import com.wenchao.cardstack.CardStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity implements CardStack.CardEventListener {
+public class MainActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     FrameLayout frameLayout;
     MotionEvent event;
     float x;
     float y;
-    private StackView stackView;
-    ArrayList<String> card_list;
-    CardStack cardstack;
-    SwipeCardAdapter swipe_card_adapter;
     private final String[] IMAGE_NAMES= {"wolf","cow", "crab", "dog","donkey"};
+    private StackView stackView;
+    private Button buttonPrevious;
+    private Button buttonNext;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        relativeLayout=(RelativeLayout) findViewById(R.id.relativeLayout);
-        card_list = new ArrayList<>();
 
-        card_list.add("card 1");
-        card_list.add("card 2");
-        card_list.add("card 3");
-        card_list.add("card 4");
-        card_list.add("card 5");
+        this.stackView = (StackView) findViewById(R.id.stackView);
 
-        cardstack = (CardStack) findViewById(R.id.container);
-        cardstack.setContentResource(R.layout.stack_item);
-        cardstack.setStackMargin(18);
-        cardstack.setListener(this);
 
-        swipe_card_adapter = new SwipeCardAdapter(getApplicationContext(),0,card_list);
-        cardstack.setAdapter(swipe_card_adapter);
+        List<StackItem> items = new ArrayList<StackItem>();
 
-    }
-    @Override
-    public boolean swipeEnd(int section, float distance) {
-        return true;
-    }
-
-    @Override
-    public boolean swipeStart(int section, float distance) {
-        return true;
-    }
-
-    @Override
-    public boolean swipeContinue(int section, float distanceX, float distanceY) {
-        return true;
-    }
-
-    @Override
-    public void discarded(int mIndex, int direction) {
-
-        int swiped_card_postion = mIndex -1;
-
-        //getting the string attached with the card
-
-        String swiped_card_text = card_list.get(swiped_card_postion).toString();
-
-        if (direction == 1) {
-
-            Toast.makeText(getApplicationContext(),swiped_card_text+ " Swipped to Right",Toast.LENGTH_SHORT).show();
-
-        } else if (direction == 0) {
-
-            Toast.makeText(getApplicationContext(),swiped_card_text+" Swipped to Left",Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(getApplicationContext(),swiped_card_text+" Swipped to Bottom",Toast.LENGTH_SHORT).show();
-
+        for(String imageName: IMAGE_NAMES) {
+            items.add(new StackItem(imageName+".png", imageName));
         }
 
+        FrameAdapter adapt = new FrameAdapter(this, R.layout.stack_item, items);
+        stackView.setAdapter(adapt);
+        stackView.setOnTouchListener();
+
+
 
     }
 
-    @Override
-    public void topCardTapped() {
 
-        Toast.makeText(getApplicationContext(),"Clicked top card",Toast.LENGTH_SHORT).show();
-
-    }
-
-    }
+}

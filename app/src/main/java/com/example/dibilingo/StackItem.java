@@ -1,4 +1,5 @@
 package com.example.dibilingo;
+
 public class StackItem {
 
     private String itemText;
