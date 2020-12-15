@@ -16,8 +16,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -28,6 +31,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewAnimator;
 import android.view.MotionEvent;
@@ -35,6 +39,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.os.Bundle;
 import android.graphics.Color;
 import android.view.View;
@@ -42,7 +48,7 @@ import android.widget.Button;
 import android.widget.StackView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 RelativeLayout relativeLayout;
 FrameLayout[] frameLayoutArray;
 FrameLayout card5;
@@ -56,11 +62,53 @@ private final int[] IMAGE_ID={R.drawable.wolf,R.drawable.cow,R.drawable.crab,R.d
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
-card5=findViewById(R.id.card);
-
         setContentView(R.layout.activity_main);
+        relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
+
+//
+//        FrameLayout.LayoutParams iLayoutParams = new FrameLayout.LayoutParams
+//                (330, 430);
+//        iLayoutParams.gravity = Gravity.CENTER;
+//        ImageView exFrame=new ImageView(this);
+//        exFrame.setLayoutParams(iLayoutParams);
+//exFrame.setImageResource(R.drawable.shape);
+//frameLayout.addView(exFrame);
+//
+//        FrameLayout.LayoutParams inLayoutParams = new FrameLayout.LayoutParams
+//                (310, 300);
+//        inLayoutParams.gravity = Gravity.CENTER;
+//        ImageView inFrame=new ImageView(this);
+//        inFrame.setLayoutParams(iLayoutParams);
+//        inFrame.setImageResource(R.drawable.shape_in_frame);
+//        frameLayout.addView(inFrame);
+//
+//
+//        FrameLayout.LayoutParams animalParams = new FrameLayout.LayoutParams
+//                (300, 300);
+//        animalParams.gravity = Gravity.CENTER;
+//        ImageView animal=new ImageView(this);
+//        animal.setLayoutParams(animalParams);
+//        animal.setPadding(0,0,0,50);
+//        animal.setImageResource(R.drawable.cow);
+//        frameLayout.addView(animal);
+
+
+        LayoutInflater ltInflater = getLayoutInflater();
+        FrameLayout frameLayout=(FrameLayout) findViewById(R.id.frame);
+        View view = ltInflater.inflate(R.layout.frame, frameLayout, false);
+        ViewGroup.LayoutParams lp = view.getLayoutParams();
+        relativeLayout.addView(view);
+View view1;
+ImageView img=(ImageView) findViewById(R.id.animal);
+img.setImageResource(R.drawable.cow);
+view1=ltInflater.inflate(R.layout.frame,frameLayout,false);
+relativeLayout.addView(view1);
+
+
+
+
+
+
         //frameLayout = (FrameLayout) findViewById(R.id.card);
 //        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
 //
@@ -119,5 +167,35 @@ card5=findViewById(R.id.card);
 //        });
     }
 
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View itemView = convertView;
+        if (itemView == null) {
+            LayoutInflater layoutInflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            itemView = layoutInflater.inflate(R.layout.stack_item, null);
+        }
+        StackItem stackItem = items.get(position);
+        if(stackItem== null)  {
+            Log.i("MyLog", "stackItem at " + position + " is null!!!");
+            return itemView;
+        }
+        // TextView defined in the stack_item.xml
+        TextView textView = (TextView) itemView.findViewById(R.id.name_img);
+
+        // ImageView defined in the stack_item.xml
+        ImageView imageView = (ImageView) itemView.findViewById(R.id.animal);
+
+        textView.setText(stackItem.getItemText());
+
+        // "image1", "image2",..
+        String imageName= stackItem.getImageName();
+
+        int resId= this.getDrawableResIdByName(imageName);
+
+        imageView.setImageResource(resId);
+
+
+        return itemView;
+    }
 
     }
