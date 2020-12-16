@@ -51,7 +51,7 @@ import android.widget.StackView;
 public class MainActivity extends Activity {
 RelativeLayout relativeLayout;
 FrameLayout[] frameLayoutArray;
-FrameLayout card5;
+FrameLayout frameLayout;
 ImageView animal;
 MotionEvent motionEvent;
 float x;
@@ -92,110 +92,110 @@ private final int[] IMAGE_ID={R.drawable.wolf,R.drawable.cow,R.drawable.crab,R.d
 //        animal.setImageResource(R.drawable.cow);
 //        frameLayout.addView(animal);
 
-
-        LayoutInflater ltInflater = getLayoutInflater();
-        FrameLayout frameLayout=(FrameLayout) findViewById(R.id.frame);
-        View view = ltInflater.inflate(R.layout.frame, frameLayout, false);
-        ViewGroup.LayoutParams lp = view.getLayoutParams();
-        relativeLayout.addView(view);
-View view1;
-ImageView img=(ImageView) findViewById(R.id.animal);
-img.setImageResource(R.drawable.cow);
-view1=ltInflater.inflate(R.layout.frame,frameLayout,false);
-relativeLayout.addView(view1);
-
-
-
-
-
-
-        //frameLayout = (FrameLayout) findViewById(R.id.card);
-//        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
 //
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                x = event.getX();
-//                y = event.getY();
-//                if (event.getAction() == MotionEvent.ACTION_MOVE) {
-//                    if (x < relativeLayout.getWidth() / 2) {
-//                        frameLayout.setPivotX(0);
-//                        frameLayout.setPivotY(frameLayout.getHeight());
-//                    }
-//                    if (x >= relativeLayout.getWidth() / 2) {
-//                        frameLayout.setPivotX(frameLayout.getWidth());
-//                        frameLayout.setPivotY(frameLayout.getHeight());
-//                    }
-//                    frameLayout.setRotation((x - relativeLayout.getWidth() / 2) / 6);
-//                }
-//                if (event.getAction() == MotionEvent.ACTION_UP) {
-//                    if (frameLayout.getRotation() >= 10) {
-//                        RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
-//                                1f, Animation.RELATIVE_TO_SELF, 1f);
-//                        frameLayout.setAlpha(1f);
-//                        frameLayout.setVisibility(View.VISIBLE);
-//                        frameLayout.animate()
-//                                .alpha(0f)
-//                                .setDuration(400)
-//                                .setListener(null);
-//                        rotate.setDuration(500);
-//                        frameLayout.startAnimation(rotate);
-//                        relativeLayout.removeView(frameLayout);
-//                    }
-//                    if (frameLayout.getRotation() <= -10) {
-//                        RotateAnimation rotate = new RotateAnimation(0, -100, Animation.RELATIVE_TO_SELF,
-//                                0f, Animation.RELATIVE_TO_SELF, 1f);
-//                        frameLayout.setAlpha(1f);
-//                        frameLayout.setVisibility(View.VISIBLE);
-//                        frameLayout.animate()
-//                                .alpha(0f)
-//                                .setDuration(400)
-//                                .setListener(null);
-//                        rotate.setDuration(500);
-//                        frameLayout.startAnimation(rotate);
-//                        relativeLayout.removeView(frameLayout);
-//                    } else {
-//                        frameLayout.setRotation(frameLayout.getRotation());
-//                        frameLayout.animate()
-//                                .rotation(0)
-//
-//                                .setListener(null);
-//
-//                    }
-//                }
-//                return true;
-//            }
-//        });
+//        LayoutInflater ltInflater = getLayoutInflater();
+//        FrameLayout frameLayout=(FrameLayout) findViewById(R.id.frame);
+//        View view = ltInflater.inflate(R.layout.frame, frameLayout, false);
+//        ViewGroup.LayoutParams lp = view.getLayoutParams();
+//        relativeLayout.addView(view);
+//View view1;
+//ImageView img=(ImageView) findViewById(R.id.animal);
+//img.setImageResource(R.drawable.cow);
+//view1=ltInflater.inflate(R.layout.frame,frameLayout,false);
+//relativeLayout.addView(view1);
+
+
+
+
+
+
+        frameLayout = (FrameLayout) findViewById(R.id.card);
+        relativeLayout.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                x = event.getX();
+                y = event.getY();
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if (x < relativeLayout.getWidth() / 2) {
+                        frameLayout.setPivotX(0);
+                        frameLayout.setPivotY(frameLayout.getHeight());
+                    }
+                    if (x >= relativeLayout.getWidth() / 2) {
+                        frameLayout.setPivotX(frameLayout.getWidth());
+                        frameLayout.setPivotY(frameLayout.getHeight());
+                    }
+                    frameLayout.setRotation((x - relativeLayout.getWidth() / 2) / 6);
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (frameLayout.getRotation() >= 10) {
+                        RotateAnimation rotate = new RotateAnimation(0, 100, Animation.RELATIVE_TO_SELF,
+                                1f, Animation.RELATIVE_TO_SELF, 1f);
+                        frameLayout.setAlpha(1f);
+                        frameLayout.setVisibility(View.VISIBLE);
+                        frameLayout.animate()
+                                .alpha(0f)
+                                .setDuration(400)
+                                .setListener(null);
+                        rotate.setDuration(500);
+                        frameLayout.startAnimation(rotate);
+                        relativeLayout.removeView(frameLayout);
+                    }
+                    if (frameLayout.getRotation() <= -10) {
+                        RotateAnimation rotate = new RotateAnimation(0, -100, Animation.RELATIVE_TO_SELF,
+                                0f, Animation.RELATIVE_TO_SELF, 1f);
+                        frameLayout.setAlpha(1f);
+                        frameLayout.setVisibility(View.VISIBLE);
+                        frameLayout.animate()
+                                .alpha(0f)
+                                .setDuration(400)
+                                .setListener(null);
+                        rotate.setDuration(500);
+                        frameLayout.startAnimation(rotate);
+                        relativeLayout.removeView(frameLayout);
+                    } else {
+                        frameLayout.setRotation(frameLayout.getRotation());
+                        frameLayout.animate()
+                                .rotation(0)
+
+                                .setListener(null);
+
+                    }
+                }
+                return true;
+            }
+        });
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View itemView = convertView;
-        if (itemView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            itemView = layoutInflater.inflate(R.layout.stack_item, null);
-        }
-        StackItem stackItem = items.get(position);
-        if(stackItem== null)  {
-            Log.i("MyLog", "stackItem at " + position + " is null!!!");
-            return itemView;
-        }
-        // TextView defined in the stack_item.xml
-        TextView textView = (TextView) itemView.findViewById(R.id.name_img);
-
-        // ImageView defined in the stack_item.xml
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.animal);
-
-        textView.setText(stackItem.getItemText());
-
-        // "image1", "image2",..
-        String imageName= stackItem.getImageName();
-
-        int resId= this.getDrawableResIdByName(imageName);
-
-        imageView.setImageResource(resId);
-
-
-        return itemView;
-    }
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        View itemView = convertView;
+//        if (itemView == null) {
+//            LayoutInflater layoutInflater = (LayoutInflater) context
+//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            itemView = layoutInflater.inflate(R.layout.stack_item, null);
+//        }
+//        StackItem stackItem = items.get(position);
+//        if(stackItem== null)  {
+//            Log.i("MyLog", "stackItem at " + position + " is null!!!");
+//            return itemView;
+//        }
+//        // TextView defined in the stack_item.xml
+//        TextView textView = (TextView) itemView.findViewById(R.id.name_img);
+//
+//        // ImageView defined in the stack_item.xml
+//        ImageView imageView = (ImageView) itemView.findViewById(R.id.animal);
+//
+//        textView.setText(stackItem.getItemText());
+//
+//        // "image1", "image2",..
+//        String imageName= stackItem.getImageName();
+//
+//        int resId= this.getDrawableResIdByName(imageName);
+//
+//        imageView.setImageResource(resId);
+//
+//
+//        return itemView;
+//    }
 
     }
